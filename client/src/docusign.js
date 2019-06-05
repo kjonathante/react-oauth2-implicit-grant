@@ -8,7 +8,6 @@ export const docusignProvider = {
         return `https://account-d.docusign.com/oauth/auth?response_type=token
         &scope=${YOUR_REQUESTED_SCOPES}
         &client_id=${YOUR_INTEGRATOR_KEY}
-        &prompt=login
         &state=${guid()}
         &redirect_uri=${encodeURIComponent(`${window.location.origin}/redirect.html`)}`
 
