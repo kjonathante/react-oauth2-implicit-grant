@@ -1,24 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import rsa from './react-simple-auth'
+import {docusignProvider} from './docusign'
 
 function App() {
+  const handleClick = async () => {
+    try{
+      const session = await rsa.acquireTokenAsync(docusignProvider)
+      console.log(session)
+    } catch( error ) {
+      console.log(error)
+    }
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <button onClick={handleClick}>Log In</button>
     </div>
   );
 }
