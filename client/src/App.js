@@ -7,12 +7,13 @@ function App() {
     try{
       const session = await rsa.acquireTokenAsync(docusignProvider)
       console.log(session)
-      const result = await fetch("https://account-d.docusign.com/oauth/userinfo",{
+      const result = await fetch("http://localhost:8000/oauth/userinfo",{
         headers: {
-          "Authorization" : "Bearer " + session.accessToken
-        }
+          "Authorization" : `Bearer ${session.accessToken}`
+        },
+        mode: "cors"
       })
-      console.log(result)
+      console.log( await result.json())
  
     } catch( error ) {
       console.log(error)
